@@ -147,7 +147,70 @@
         </div>
 
 
+        <script>
 
-
+  
+  
+          // Push batch images to storage and store references in the database
+          var pushImage = function (file) {
+           document.getElementById('submitButton').innerHTML = `
+                 <button class="button" style="background-color: #7272F2;"><i class="fa fa-pause-circle-o" aria-hidden="true" style="color:'white'"></i>Uploading</button>
+                 `
+             // var uid = firebase.auth().currentUser.uid;
+             // Create storage reference
+             var ref = firebase.storage().ref(`/talanku-142dc-default-rtdb/talanku/`).child(file.name + ".jpg");
+         
+             // Upload file and get task
+             var task = ref.put(file, {contentType: file.type});
+          
+             // Monitor task for progress
+             task.on('state_changed',
+                 // Shows progress of task
+                 function progress(snapshot) {
+                     var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                     console.log(percentage);
+                 },
+                 // Shows any errors occurring during progress
+                 function error(err) {
+                     // Handle unsuccessful uploads
+                     console.log(err.message);
+         
+                 },
+                 // Shows when task is completed
+                 function complete() {
+                     // Handle successful uploads on complete
+                     var image = task.snapshot.downloadUrl;
+                     var secondImage = task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                 console.log('File available at', downloadURL);
+                 document.getElementById("firebaseLink").value = downloadURL
+                 console.log(task);
+                 document.getElementById('submitButton').innerHTML = {{form.submit (class="button")}}
+               });
+         
+                     // Data model to be uploaded to the database
+                     var data = {
+                         imageUrl: image
+                     };
+                     
+                     // var db = firebase.database().ref(/GHotelBookMan/Hotels/${uid}/Images).push();
+                     // db.set(data).then(() => {
+                     //     row.empty();
+                     //     loadCurrentHotel(uid);
+                     // });
+                 });  
+         };
+         
+         
+           function changeimagesss(event) {
+             console.log(event)
+             // console.log(event.target.files[0])
+             // var uploadItem = event.target.files[0]
+             // console.log(uploadItem)
+             pushImage(event)
+         
+             
+           }
+         
+          </script>
      
 {% endblock body %}
