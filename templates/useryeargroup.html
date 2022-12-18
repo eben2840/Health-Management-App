@@ -14,49 +14,45 @@
   </head>
   <body>
 
-
+<!---
 <div class="container" style=" border-radius: 5px; padding: 20px; background: #fff;">
   <div class="row">
     <div class="col" style="display: flex; justify-content: space-between;">
+      <h6 class="text-muted"> Central Alumni Platform </h6>
+   
+      <i class='bx bxs-user bx-md icon'></i>
+      </a>     
 
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-danger mb-3" role="alert">
-            Hello {{current_user.name}} {{ message }} 
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          
-          {% endfor %}
-      {% endif %}
-  {% endwith %}
 
-    {% block body %}
-    {% endblock%}
-
-     <!--<h6 class="text-muted"> Hello {{current_user.name}},</h6>-->
-      <!--<i class='bx bxs-cog bx-sm icon'></i>-->
-      <a href="{{url_for('userlogin')}}"><h6>Logout</h6></a> 
     </div>
     <h1>Year Groups</h1>
     <h6 class="text-muted">18 entries</h6>
 
     
-
-    <form class="d-flex " role="search" style="margin-top: 3vh; margin-bottom: 5vh;" method='POST' action='{{url_for('usersearch')}}'>
-      {{form.hidden_tag()}}
+<a href="/userprofile">profile</a>
+    <form class="d-flex " role="search" style="margin-top: 3vh; margin-bottom: 5vh;">
       <input class="form-control " type="search" placeholder="Search a particular person or category" aria-label="Search">
-
       <button class="btn" style="color: #fff; background: #992621; border: none; margin-left: 2vw;" type="submit"><i class='bx bx-search-alt icon'></i></button>
         
     </form>  
+  </div>
+  <br>-->
+  <div class="row" style=" border-radius:0 0 0 150px; padding: 20px; background: blue;">
+   <a href="/userbase"> <img src="static/img/arrow.png" alt=""style="width:40px; margin-left:10px; height:10px; margin-top:20px;"  ></a>
+    <div class="ade" style="display:flex; justify-content: space-between; margin-top:10px;">
+      <img src="static/img/as.png" alt=""style="width:110px; margin-left:40px; height:120px; margin-top:20px;"  >
+      <a href="" style="text-decoration: none; color: #fff; margin-top:40px; margin-right:px;">
+       <h2>Virtual<br>Ecosystem</h2>
+       <h6 style="font-size:10px;">Specialized healthcare for student made <br>Specialized healthcare for student made easy </h6>
+     </a>
+    </div>
   </div>
   <br>
 
   <div class="row" style="text-align: center; margin: auto;">
     <div class="col-md-2 col-6">
       <div class="user-box">
-        <a href="/usernewform" style="text-decoration: none;">
+        <a href="/newforms" style="text-decoration: none;">
           <h1 class="user-box-items" style="margin-bottom: 3vh; font-weight: bold;">2022</h1>
         </a>
           <h6 class="text-muted">1248 Graduates</h6> 
@@ -64,7 +60,7 @@
     </div>
     <div class="col-md-2 col-6">
       <div class="user-box">
-        <a href="/usernewform" style="text-decoration: none;">
+        <a href="/newforms" style="text-decoration: none;">
           <h1 class="user-box-items" style="margin-bottom: 3vh; font-weight: bold;">2021</h1>
         </a>
           <h6 class="text-muted">3000 Graduates</h6> 
@@ -72,7 +68,7 @@
     </div>
     <div class="col-md-2 col-6">
       <div class="user-box">
-        <a href="/usernewform" style="text-decoration: none;">
+        <a href="/newforms" style="text-decoration: none;">
           <h1 class="user-box-items" style="margin-bottom: 3vh; font-weight: bold;">2020</h1>
         </a>
           <h6 class="text-muted">2465 Graduates</h6> 
@@ -80,13 +76,32 @@
     </div>
     <div class="col-md-2 col-6">
       <div class="user-box">
-        <a href="/usernewform" style="text-decoration: none;">
+        <a href="/newforms" style="text-decoration: none;">
           <h1 class="user-box-items" style="margin-bottom: 3vh; font-weight: bold;">2019</h1>
         </a>
           <h6 class="text-muted">1002 Graduates</h6> 
       </div>
     </div>
     
+
+<div class="ade"  >
+  <div class="ade"style="display: flex; justify-content: space-between;  background-color: #fff; padding:30px; border-radius:20px; margin-bottom:20px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+    <a href="" style="text-decoration: none;  text-align:center; color: #000;">
+      <h6 style="font-size:10px; text-align:left;">Get to Speak<br>to a counsellor right now.<br>we care about you.</h6>
+    </a>
+    <button class="btn" style="color: #fff; background: #ee8080; border: none; margin-left: 2vw; border-radius:20px;" type="submit">Patient Profile</button>
+</div>
+</div>
+
+<div class="ade"  >
+  <div class="ade"style="display: flex; justify-content: space-between;  background-color: #fff; padding:30px; border-radius:20px; margin-bottom:20px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+    <button class="btn" style="color: #fff; background: #ee8080; border: none; margin-left: 2vw; border-radius:20px;" type="submit">Patient Profile</button>
+    <a href="" style="text-decoration: none;  text-align:center; color: #000;">
+      <h6 style="font-size:10px; text-align:left;">Get to Speak<br>to a counsellor right now.<br>we care about you.</h6>
+    </a>
+</div>
+</div>
+
   </div>
   
 
@@ -102,3 +117,15 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

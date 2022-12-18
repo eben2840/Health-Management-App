@@ -129,11 +129,10 @@ class User(db.Model,UserMixin):
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    if current_user != None:
+    if current_user == None:
         flash("Welcome to the CentralAlumina " + current_user.email, "Success")
-    else:
         flash(f"There was a problem")
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', title='dashboard')
 
 
 
@@ -168,7 +167,7 @@ def addalumni():
             flash("New Alumni Added", "success")
             return redirect('list')
     print(form.errors)
-    return render_template("addAlumni.html", form=form)
+    return render_template("addAlumni.html", form=form, title='addalumni')
 
 
 @app.route('/department', methods=['GET', 'POST'])
@@ -179,7 +178,7 @@ def department():
 @app.route('/newreport')
 @login_required
 def newreport():
-    return render_template('newreport.html')
+    return render_template('newreport.html', title="newreport")
 
 @app.context_processor
 def base():
@@ -190,10 +189,43 @@ def base():
 def upload_image():
     return render_template('newreport.html')
 
-@app.route('/')
-def land():
-    return render_template('land.html')
 
+@app.route('/index')
+def index():    
+    return render_template('index.html')
+
+
+@app.route('/userprofile', methods=['GET', 'POST'])
+def userprofile():
+    form=Adduser()
+    if form.validate_on_submit():
+  
+            new=User(fullname=form.fullname.data,
+                 indexnumber=form.indexnumber.data,
+                   gender=form.gender.data, 
+                    school=form.school.data,
+                    department=form.department.data,
+                   completed=form.completed.data,
+                   admitted=form.admitted.data,
+                   email=form.email.data,  
+                   telephone=form.telephone.data,  
+                   hall=form.hall.data,  
+                   nationality=form.nationality.data,  
+                   address=form.address.data,  
+                   work=form.work.data,  
+                   guardian=form.guardian.data,  
+                  marital=form.marital.data,
+                  extra=form.extra.data,    
+            
+                  )
+       
+            db.session.add(new)
+            db.session.commit()
+            flash("New Alumni Added", "success")
+            return redirect('userbase')
+    print(form.errors)
+    return render_template("userprofile.html", form=form, title='addalumni')
+ 
 
 
 
@@ -227,10 +259,11 @@ def usersearch():
     return render_template("usersearch.html", form=form, posts=posts)
 
 
+
 @app.route('/year', methods=['GET', 'POST'])
 @login_required
 def year():
-    return render_template('year.html')
+    return render_template('year.html', title='year')
 
 
 @app.route('/list/<int:userid>', methods=['GET', 'POST'])
@@ -239,7 +272,7 @@ def list(userid):
     print("Fetching one")
     profile=User.query.get_or_404(userid)
     print(current_user)
-    return render_template("profileid.html",current_user=current_user, profile=profile)
+    return render_template("profileid.html",current_user=current_user, profile=profile, title="list")
  
  
  
@@ -250,26 +283,21 @@ def lists():
     users=User.query.order_by(User.id.desc()).all()
     print(users)
     print(current_user)
-    return render_template("list.html", users=users, current_user=current_user)
+    return render_template("list.html", users=users, current_user=current_user, title="list")
  
 
 
-@app.route('/base')
-@login_required
-def base():
-    return render_template('base.html')
-
 @app.route('/newschools', methods=['GET', 'POST'])
 def newschools():
-    return render_template('newschools.html')
+    return render_template('newschools.html', title="newschools")
 
 
 @app.route('/logout')
 @login_required
 def logout():
     if current_user:
-        logout_user()
         print(current_user.email)
+        logout_user()
     else:
         print("Well that didnt work")
     flash('You have been logged out.','danger')
@@ -354,7 +382,7 @@ def information():
 
 
 #CRUD(update and delete routes)
-@app.route("/update/<int:id>")
+@app.route("/update/<int:id>", methods=['POST', 'GET'])
 def update(id):
     form=Adduser()
     user=User.query.get_or_404(id)
@@ -400,7 +428,7 @@ def update(id):
             db.session.commit()
             return redirect(url_for('list')) 
         except:
-            return"errrrror"
+            return "errror"
     return render_template("addAlumni.html", form=form)
     
     
@@ -483,54 +511,12 @@ def signup():
             
     return render_template('signup.html', form=form)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #user land area
 @app.route('/userlanding')
-@login_required
 def userlanding():
     return render_template('userlanding.html')
 
 @app.route('/usersignup', methods=['POST','GET'])
-@login_required
 def usersignup():
     form = AlumniSignin()
     print(form.indexnumber.data)
@@ -552,9 +538,8 @@ def usersignup():
             
     return render_template('usersignup.html', form=form)
 
-@app.route('/userlogin', methods=['POST','GET'])
-@login_required
-def userlogin():
+@app.route('/', methods=['POST','GET'])
+def ulogin():
     form = Alumni()
     print(form.email.data)
     print(form.password.data)
@@ -597,19 +582,30 @@ def userschool():
 @app.route('/userbase')
 @login_required
 def userbase():
-    return render_template('userbase.html')
+    print("Fetching all")
+    users=User.query.order_by(User.id.desc()).all()
+    print(users)
+    print(current_user)
+    return render_template("userbase.html", users=users, current_user=current_user)
+ 
+
+  
 
 
-@app.route('/userinformation')
+@app.route('/userinformation/<int:userid>', methods=['GET', 'POST'])
 @login_required
-def userinformation():
-    return render_template('userinformation.html')
+def userinformation(userid):
+    profile=User.query.get_or_404(userid)
+    print(current_user)
+    return render_template("userinformation.html",current_user=current_user, profile=profile, title="list")
+ 
+   
 #ending user
 
 
 
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD
-    app.run(host='0.0.0.0', port=4000,debug=True)
+    app.run(host='0.0.0.0', port=4000, debug=True)
     
     

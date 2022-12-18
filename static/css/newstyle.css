@@ -5,7 +5,7 @@ body {
     padding: 16px;
     background-color: #fff;
     border-radius: 10px;
-    color: #992621;
+    color: #000;
     display: flex;
     align-items: center;
 }
@@ -21,7 +21,7 @@ h4 {
 }
 .side-nav-button-active {
     padding: 20px;
-    background-color: #992621;
+    background-color: #4169E1;
     border-radius: 10px;
     color: #fff;
     display: flex;
@@ -29,10 +29,10 @@ h4 {
 }
 .side-nav-button a {
     text-decoration: none;
-    color: #992621;
+    color: #000;
 }
 .side-nav-button a:hover {
-    color: #992621;
+    color: #4169E1;
 }
 .side-nav-button-active a {
     text-decoration: none;
@@ -44,7 +44,7 @@ h4 {
 .dashboard-item {
     background-color: #fff;
     padding: 30px;
-    border-radius: 15px;
+    
     color: #fff;
     margin: 0;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -54,7 +54,6 @@ h4 {
 .department-item {
     background-color: #fff;
     padding: 30px;
-    border-radius: 15px;
     color: #fff;
     margin: 0;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -63,9 +62,8 @@ h4 {
 }
 
 .department-item-active {
-    background-color: #992621;
+    background-color: #4169E1;
     padding: 30px;
-    border-radius: 15px;
     color: #fff;
     margin: 0;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -76,7 +74,7 @@ h4 {
 
 .dashboard-item-text{
     margin-top: 0;
-    color: #992621;
+    color: #000;
     
 }
 
@@ -97,14 +95,14 @@ h4 {
     
 }
 .profile-name {
-    color: #992621;
+    color: #000;
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 2px;
 }
 .title {
     font-size: 12px;
-    color: #992621;
+    color:#000;
     font-weight: 400;
 }
 .school-item {
@@ -162,3 +160,43 @@ h4 {
     margin-bottom: 2vh;
 }
 
+
+
+.form-floating:focus {
+    color: grey;
+}
+
+.user-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 5vh;
+    justify-content: space-between;
+    
+}
+.user-box-items {
+    color: black;
+}
+
+.user-pic img {
+    width: 70px; 
+    height: 70px;
+}
+.user-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+}
+.user-profile-text {
+    margin-bottom: 2vh;
+}
+
+.info-pic{
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+}

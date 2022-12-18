@@ -2,9 +2,9 @@ from wtforms import Form, BooleanField, StringField, PasswordField, validators, 
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
-# from app import Person
 
 
+#admin form
 class RegistrationForm(FlaskForm):
     id = IntegerField('id', validators=[(DataRequired())])
     name = StringField('name', validators=[(DataRequired())])
@@ -17,6 +17,21 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('password', validators=[DataRequired()])
     submit = SubmitField('Register')
 
+#admin login  
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
+ 
+class Registration(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    phone = StringField('Phone', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    submit = SubmitField('SignUp')  
+    # el4 = SelectField('el4', default='None', choices=[(user.lastname, user.lastname) for user in Person.query.all()])  
+  
+
+#forms
 class Adduser(FlaskForm):
     fullname = StringField('fullname')
     indexnumber= StringField('indexnumbe')
@@ -33,30 +48,15 @@ class Adduser(FlaskForm):
     address= StringField('address')
     work= StringField('work')
     guardian= StringField('guardian')
-    marital= SelectField('Marital',  choices=[('Marital Status','Marital Status'),('Married', 'Married'), ('Divored','divored') ], default=None )
+    marital= SelectField('Marital',  choices=[('Marital Status','Marital Status'),('Married', 'Married'), ('Divored','divored'), ('Single','Single')  ], default=None )
     picture = FileField('Add a picture', validators=[ FileAllowed(['jpg', 'png','jpeg'])])
     extra= StringField('extra')
     submit = SubmitField('Register')
     image_file = FileField('image_file', validators=[FileAllowed(['jpg', 'png'])])
-    
-class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
- 
-class Registration(FlaskForm):
-    #indexNumber= StringField('indexNumber', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired()])
-    phone = StringField('Phone', validators=[DataRequired()])
-    name = StringField('Name', validators=[DataRequired()])
-    
-    submit = SubmitField('SignUp')  
-    
-    # el4 = SelectField('el4', default='None', choices=[(user.lastname, user.lastname) for user in Person.query.all()])
   
+  
+
     
-    #Program = SelectField('programs', choices=[("one", "one"),("two", "two"),("three", "three")])
-    submit =SubmitField('submit')
     
 # create a search form
 class Search(FlaskForm):
@@ -64,17 +64,19 @@ class Search(FlaskForm):
     submit = SubmitField('Search') 
     
     
-    
+  
+  
+  
+#userlogin  
 class Alumni(FlaskForm):
     email= StringField('email', validators=[DataRequired()])
     password = StringField('password', validators=[DataRequired()])
-    submit = SubmitField('SignUp')  
+    submit = SubmitField('Login')  
     
 
 class AlumniSignin(FlaskForm):
     email = StringField('email', validators=[DataRequired()])
     indexnumber = StringField('indexnumber', validators=[DataRequired()])
     name = StringField('name', validators=[DataRequired()])
-    
     submit = SubmitField('SignUp')  
     
