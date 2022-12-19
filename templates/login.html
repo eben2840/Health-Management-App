@@ -65,8 +65,9 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-             
-              <span class="padding-bottom--15">Log in to your account</span>
+              <img src="static/img/as.png" alt="" style="margin-left:120px;" width="30%">
+              <span class="padding-bottom--15" style="text-align:center;"><b>Admin Login Page</b></span>
+              
               {% with messages = get_flashed_messages() %}
               {% if messages %}
                   {% for message in messages %}
@@ -91,9 +92,7 @@
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
                     <label for="password">Password</label>
-                    <div class="reset-pass">
-                      <a href="#">Forgot your password?</a>
-                    </div>
+                     
                   </div>
                   {{form.password(class="form-control")}}
                 </div>
@@ -118,7 +117,7 @@
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span>Don't have an account? <a href="/usersignup">SignUp</a></span>
+            <span>Don't have an account? <a href="/signup">SignUp</a></span>
             
           </div>
         </div>

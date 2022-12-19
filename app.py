@@ -532,7 +532,7 @@ def usersignup():
             login_user(user, remember=True)
             print(current_user)
             flash(f'' + user.email +', your account has been created ', 'success')
-            return redirect(url_for('userlogin'))
+            return redirect(url_for('ulogin'))
         else:
             print(form.errors)
             
@@ -553,7 +553,7 @@ def ulogin():
             print(user.email + "validored successfully")
             login_user(user)
             #flash (f' ' + user.email + ',You have been logged in successfully ' ,'success')
-            return redirect(url_for('useryeargroup'))
+            return redirect(url_for('userbase'))
             # next = request.args.get('next')
         else:
                 flash (f'The account cant be found', 'danger')
