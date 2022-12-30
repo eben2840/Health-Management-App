@@ -499,7 +499,7 @@ def signup():
     if request.method == "POST": 
         if form.validate_on_submit():
             print('Success')
-            user =Person(password="central@123", email=form.email.data, phone=form.phone.data, name=form.name.data)
+            user =Person(password="central@123", email="admin@gmail.com", phone=form.phone.data, name=form.name.data)
             db.session.add(user)
             db.session.commit()
             login_user(user, remember=True)
