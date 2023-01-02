@@ -67,6 +67,10 @@
               </li>
              
             </ul>
+          
+              <div class="elipse" style="background: #4169E1; border-radius: 50%;">
+                <img src="static/img/memoji.png" alt="" width="100%" >
+              </div>
             <div class="profile-info" style="padding-left: 10px; margin-right:40px;">
               <div class="profile-name"><b>{{current_user.name}}</b> </div>
               <div class="title">Adminstrator</div>
@@ -249,9 +253,13 @@
                   
                   </div>
                
-            <button class="btn" style="color: #fff; background: #992621; border: none; margin-left: 3px;" type="logout">
-              <a href="{{url_for('logout')}}" style="text-decoration: none; color: #fff;">Logout</a>
-            </button>
+                  <i class='bx bx-exit icon' ></i>
+                  <a href="{{url_for('logout')}}" type="logout" style="text-decoration: none; color: #000;">Settings</a><br>
+            
+    
+              <i class='bx bx-exit icon' ></i>
+              <a href="{{url_for('logout')}}" type="logout" style="text-decoration: none; color: #000;">Logout</a>
+        
 
                   
                   
