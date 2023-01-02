@@ -499,7 +499,7 @@ def signup():
     if request.method == "POST": 
         if form.validate_on_submit():
             print('Success')
-            user =Person(password="central@123", email="admin@gmail.com", phone=form.phone.data, name=form.name.data)
+            user =Person(password="central@123", email=form.email.data, phone=form.phone.data, name=form.name.data)
             db.session.add(user)
             db.session.commit()
             login_user(user, remember=True)
@@ -541,24 +541,34 @@ def usersignup():
 @app.route('/', methods=['POST','GET'])
 def ulogin():
     form = Alumni()
+    print ('try')
     print(form.email.data)
     print(form.password.data)
     
     if form.validate_on_submit():
         print("form Validated successfully")
         user = alumni.query.filter_by(email = form.email.data).first()
-        print("user:" + user.email + "found")
-        print(user.password)
-        if user and form.password.data == user.password:
-            print(user.email + "validored successfully")
-            login_user(user)
-            #flash (f' ' + user.email + ',You have been logged in successfully ' ,'success')
-            return redirect(url_for('userbase'))
-            # next = request.args.get('next')
+            # flash (f'Wrong Password', 'success')
+            # sendtelegram('Entered Wrong Emai')
+        if user != None:
+            print("user:" + user.email + "found")
+            print(user.password)
+            if user and form.password.data == user.password:
+                print(user.email + "validored successfully")
+                login_user(user)
+                
+                flash ('Welcome to dropme' +' ' + user.name ,'success')
+                return redirect(url_for('userbase'))
+                # next = request.args.get('next')
+            else:
+                flash (f'Wrong Password', 'success')
+                
         else:
-                flash (f'The account cant be found', 'danger')
+            
+            flash (f'Wrong Password', 'danger')
+            
+            
     return render_template('userlogin.html', form=form)
-
 
 @app.route('/useryeargroup')
 @login_required
