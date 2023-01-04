@@ -66,6 +66,9 @@
                 
               </li>
              
+              <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"  style="border-radius:10px; padding:5px;  margin-left:30px; width:100px;"aria-controls="offcanvasExample">
+               Reports<i class="fas fa-jack-o-lantern    "></i>
+                </button>
             </ul>
           
               <div class="elipse" style="background: #4169E1; border-radius: 50%;">
@@ -100,7 +103,7 @@
                     <form class="d-flex " role="search" method='POST' action='{{url_for('search')}}' >
                       {{form.hidden_tag()}}
                     
-                      <input class="form-control " type="search" name='searched' placeholder="Search for Patient" aria-label="Search">
+                      <input class="form-control " type="search" name='searched' placeholder="Search for Students" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
 
@@ -117,7 +120,18 @@
                     </div>
                     {% endif %}
 
-                   
+                    {% if title == "addalumni" %}
+                      <div class="side-nav-button-active">
+                        <i class='bx bx-add-to-queue icon' ></i>
+                        <a href="/addalumni" class="side-nav-button-text">Add Patient</a>
+                      </div>
+                      {% else %}
+                      <div class="side-nav-button">
+                        <i class='bx bx-add-to-queue icon' ></i>
+                        <a href="/addalumni" class="side-nav-button-text">Add Patient</a>
+                      </div>
+                    
+                    {% endif %}
                     
 
                     {% if title == "list" %}
@@ -133,7 +147,7 @@
                     
                     {% endif %}
 
-                    {% if title == "list" %}
+                    {% if title == "lis" %}
                     <div class="side-nav-button-active">
                       <i class='bx bx-group icon' ></i>
                       <a href="/list" class="side-nav-button-text">Messages</a>
@@ -147,18 +161,7 @@
                     {% endif %}
                     
 
-                    {% if title == "list" %}
-                    <div class="side-nav-button-active">
-                      <i class='bx bx-group icon' ></i>
-                      <a href="/list" class="side-nav-button-text">Reports</a>
-                    </div>
-                    {% else %}
-                    <div class="side-nav-button">
-                      <i class='bx bx-group icon' ></i>
-                      <a href="/list" class="side-nav-button-text">Reports</a>
-                    </div>
-                    
-                    {% endif %}
+                  
 
                     {% if title == "year" %}
                     <div class="side-nav-button-active">
@@ -176,20 +179,9 @@
                   </div>
                   <div class="side-menu">
                  
-                    {% if title == "addalumni" %}
-                      <div class="side-nav-button-active">
-                        <i class='bx bx-add-to-queue icon' ></i>
-                        <a href="/addalumni" class="side-nav-button-text">Add Patient</a>
-                      </div>
-                      {% else %}
-                      <div class="side-nav-button">
-                        <i class='bx bx-add-to-queue icon' ></i>
-                        <a href="/addalumni" class="side-nav-button-text">Add Patient</a>
-                      </div>
-                    
-                    {% endif %}
+                   
 
-                    {% if title == "addalumni" %}
+                    {% if title == "addalumn" %}
                       <div class="side-nav-button-active">
                         <i class='bx bx-add-to-queue icon' ></i>
                         <a href="/addalumni" class="side-nav-button-text">Medications</a>
@@ -202,7 +194,7 @@
                     
                     {% endif %}
 
-                    {% if title == "addalumni" %}
+                    {% if title == "addalumn" %}
                     <div class="side-nav-button-active">
                       <i class='bx bx-add-to-queue icon' ></i>
                       <a href="/addalumni" class="side-nav-button-text">Health Record</a>
@@ -217,10 +209,7 @@
 
                     
                    
-                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"  style="border-radius:30px;"aria-controls="offcanvasExample">
-                     Manage Appointments<i class="fas fa-jack-o-lantern    "></i>
-                    </button>
-                    
+   
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                       <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
@@ -245,7 +234,7 @@
                   </div>
 
                   
-                  <div class="profile-details" style=" bottom: 0; padding-top: 20%;">
+                  <div class="profile-details" style=" bottom: 0; padding-top: 40%;">
                    
 
                  
@@ -283,7 +272,7 @@
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for message in messages %}
-                    <div class="alert alert-danger mb-3" role="alert">
+                    <div class="alert alert-success mb-3" role="alert">
                         {{ message }} 
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
