@@ -48,7 +48,7 @@ class Adduser(FlaskForm):
     address= StringField('address')
     work= StringField('work')
     guardian= StringField('guardian')
-    marital= SelectField('Marital',  choices=[('Marital Status','Marital Status'),('Married', 'Married'), ('Divored','divored'), ('Single','Single')  ], default=None )
+    marital= SelectField('Marital',  choices=[('Current Level','Current Level'),('100', '100'), ('200','200'), ('300','300'), ('400','400'), ('500','500'), ('600','600') ], default=None )
     picture = FileField('Add a picture', validators=[ FileAllowed(['jpg', 'png','jpeg'])])
     extra= StringField('extra')
     submit = SubmitField('Register')

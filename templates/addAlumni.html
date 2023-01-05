@@ -4,7 +4,7 @@
 
 
 <h4>Add a New Patients</h4>
-<p class="text-muted" style="margin-bottom: 0;">Please fill in this form :</p>
+<h5 class="" style="margin-bottom: 0; text-align:center;"><b>Only for Administrator: </b></h5>
 <br>
 <form action='' method="post" enctype="multipart/form-data">
   {{form.hidden_tag()}}
@@ -45,12 +45,12 @@
 
   <div class="form-floating mb-3">
     {{form.completed(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
-    <label for="floatingInput" class="text-muted">Year Completed</label>
+    <label for="floatingInput" class="text-muted">Year Admitted</label>
   </div>
 
   <div class="form-floating mb-3">
     {{form.admitted(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
-    <label for="floatingInput" class="text-muted">Year Admitted</label>
+    <label for="floatingInput" class="text-muted">Completion Year</label>
   </div>
 
   <div class="form-floating mb-3">
@@ -73,51 +73,48 @@
     <label for="floatingInput" class="text-muted">Nationality</label>
   </div>
 
+  <h5 class="" style="margin-bottom: 0; text-align:center; margin-bottom:20px;"><b>Symptoms and Medications: </b></h5>
+
   <div class="form-floating mb-3">
     {{form.address(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
-    <label for="floatingInput" class="text-muted">Home Address</label>
+    <label for="floatingInput" class="text-muted">Drugs and Medications</label>
   </div>
 
   <div class="form-floating mb-3">
     {{form.work(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
-    <label for="floatingInput" class="text-muted">Current Place of Work</label>
+    <label for="floatingInput" class="text-muted">Symptoms</label>
+  </div>
+
+
+  <h5 class="" style="margin-bottom: 0; text-align:center; margin-bottom:20px;"><b>Only for Doctor: </b></h5>
+
+  <div class="form-floating mb-3">
+    {{form.marital(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
+    <label for="floatingInput" class="text-muted"></label>
+  </div>
+
+  <div class="form-floating mb-3">
+    {{form.extra(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
+    <label for="floatingInput" class="text-muted">Illness</label>
   </div>
 
   <div class="form-floating mb-3">
     {{form.guardian(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
-    <label for="floatingInput" class="text-muted">Current Position</label>
+    <label for="floatingInput" class="text-muted">Drugs Perscriptions</label>
   </div>
+  
 
-
-
-  <div class="form-floating mb-3">
-    {{form.marital(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
-    <label for="floatingInput" class="text-muted">Marital Status</label>
-  </div>
 
   
 
-  <div class="form-floating mb-3">
-    {{form.extra(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
-    <label for="floatingInput" class="text-muted">Extra Curicullum Activities</label>
-  </div>
-
   
-
-  <div class="form-floating mb-3">
-    
-      
-     
-    {{form.image_file(class="form-control", id="files", onchange="changeimagesss(event.target.files[0])")}}
-
-  </div>
   
 
 
 
 
 
-  <button class="btn" style="color: #fff; background: #992621; border: none;" type="submit ">Register</button>
+  <button class="btn" style="color: #fff; background: blue; border: none;" type="submit ">Register</button>
               
 </form>
 
