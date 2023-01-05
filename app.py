@@ -428,7 +428,7 @@ def update(id):
             db.session.commit()
             return redirect(url_for('list')) 
         except:
-            return "errror"
+            return redirect(url_for('dashboard')) 
     return render_template("addAlumni.html", form=form)
     
     
