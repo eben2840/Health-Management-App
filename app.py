@@ -464,7 +464,7 @@ def login():
     return render_template('login.html')
 '''
 
-@app.route('/login', methods=['POST','GET'])
+@app.route('/', methods=['POST','GET'])
 def login():
     form = LoginForm()
     print ('try')
@@ -538,7 +538,7 @@ def usersignup():
             
     return render_template('usersignup.html', form=form)
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/ulogin', methods=['POST','GET'])
 def ulogin():
     form = Alumni()
     print ('try')
