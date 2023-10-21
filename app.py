@@ -21,7 +21,7 @@ from flask_cors import CORS
 app=Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SECRET_KEY'] =" thisismysecretkey"
+app.config['SECRET_KEY'] =" thisismysecretkeykeyekkyekyekyeykykyeyyekykey"
 app.config['UPLOADED_PHOTOS_DEST'] ='uploads'
 
 # photos=UploadSet('photos', IMAGES)
