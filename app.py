@@ -598,8 +598,10 @@ def userbase():
     print(current_user)
     return render_template("userbase.html", users=users, current_user=current_user)
  
-
-  
+@app.route('/userin, methods=['GET', 'POST'])
+@login_required
+  return render_template("userinformation.html")
+ 
 
 
 @app.route('/userinformation/<int:userid>', methods=['GET', 'POST'])
